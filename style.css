@@ -14,6 +14,14 @@
     position: relative;
 }
 
+header {
+    position: fixed;
+    top: 0px;
+    height: 100px;
+    width: 100%;
+    z-index: 9;
+}
+
 .navbar { 
     position: fixed;
     left: 0px;
@@ -238,6 +246,7 @@
     transform: translate( 0%,-50%);
     transition: 0.5s ease-in-out;
     border-radius: 0px 50px 50px 0px;
+    z-index: 0;
 }
 
 .sticky:hover {
@@ -276,7 +285,7 @@
 
 .footerr { 
     position: relative;
-    bottom: 0%;
+    bottom: 0;
     height: 100px;
     width: 100%;
     background-color: rgb(63, 63, 63);
@@ -292,6 +301,36 @@
     font-size: 20px;
 }
 
+#navFooter {
+    visibility: hidden;
+    position: absolute;
+    display: block;
+    bottom: 0vh;
+    left: 0px;
+    width: 100vw;
+    height: 100px;
+    background-color: rgb(63, 63, 63); 
+    z-index: 0;   
+    color: aliceblue;
+    font-family: 'Oswald', sans-serif;
+}
+
+#navFooter ul {
+    position: absolute;
+}
+
+#navFooter li {
+    position: relative;
+    display: inline-block;
+    left: -10px;
+    height: 100px;
+    width: 120px;
+    line-height: 100px;
+    text-align: center;
+}
+
+
+
 @media (max-width: 480px) {
     * {
         margin: 0px;
@@ -299,89 +338,52 @@
 
         /* navigation bar */
     .parent {
-        position: relative;
-    }
-
-    .navbar { 
-        position: fixed;
-        left: 0px;
-        top: 0px;
         width: 100%;
-        height: 70px;
-        grid-area: 1 / 1 / 2 / 6; 
-        background-color: rgb(63, 63, 63);
-        z-index: 9;  
-        box-shadow: 0 0 15px 0 rgb(63, 63, 63);
     }
 
+    header {
+        position: fixed;
+        top: 0px;
+        height: 100px;
+        width: 100%;
+        z-index: 9;
+    }
 
+    .navbar {
+        position: fixed;
+        width: 100%;
+        top: 0;
+    }
 
     #menuBtn {
         position: relative;
-        top: 10px;
-        left: 20px;
-        height: 50px;
-        width: 70px;
+        top: 5vw;
+        left: 5vw;
         z-index: 20;
     }
 
     #menuBtn span {
-        font-size: 70px;
-        position: relative;
-        transform: translate( 0, -15%);
-        cursor: pointer;
-        color: aliceblue;
-        transition: 0.5s ease-out;
-        z-index: 9;
+        visibility: hidden;
     }
-
-    #menuBtn span:hover {
-        font-size: 70px;
-        transform: translate( 0, -15%);
-        z-index: 20;
-        transition: 0.5s ease-out;
-        color: rgba(252,70,107,1);
-    }
-
 
     .logo {
         visibility: hidden;
-        position: absolute;
-        top: 0px;
-        right: 50px;
-        font-family: 'Oswald', sans-serif;
-        font-size: 10px;
-        color: aliceblue;
-        letter-spacing: 10px;
     }
 
     .logo2 {
-        top: -5px;
-        right: 60px;
+        top: 2vw;
+        font-size: 6vw;
+        right: 5vw;
         visibility: visible;
     }
-
-
-
 
 
     /* Tab Bar  */
 
     #slideBox  {
-        position: fixed;
-        top: -200px;
-        left: 0px;
-        height: 250px;
-        width: 200px;
-        background-color: rgb(63, 63, 63);
-        transition: 0.6s ease-in-out;
-        box-shadow: 0 0 15px 0 rgb(63, 63, 63);
-        z-index: 3;
+        visibility: hidden;
     }
 
-    .change {
-        transform: translateY(270px);
-    }
 
     #slideBox ul {
         position: relative;
@@ -411,24 +413,23 @@
     /* content  */
 
     .container { 
-        position: relative;
-        top: 0px;
+        width: 100%;
+        position: absolute;
+        top: 100px;
         left: 0px;
         background: rgb(63,94,251);
         background: linear-gradient(356deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-        height: fit-content;
     }
 
     .container #about {
         position: relative;
         top: 0px;
-        width: 60vw;
+        width: 80%;
         height: 800px;
         z-index: 0;
         left: 50%;
         transform: translate( -50%, 0%);
         margin: 0px;
-        /* background-color:aqua ; */
     }
 
     .container #about h1 {
@@ -439,17 +440,15 @@
         color: aliceblue;
         font-family: 'Source Code Pro', monospace;
         font-size: 20px;
-
     }
 
     .container #projet {
         position: relative;
-        width: 60vw;
-        height: 800px;
+        width: 100%;
+        height: fit-content;
         z-index: 0;
         left: 50%;
         transform: translate( -50%, 0%);
-        /* background-color:rgb(98, 63, 255) ; */
     }
 
     .container #projet h1 {
@@ -463,13 +462,13 @@
 
     #projectSection {
         position: relative;
-        top: -100px;
+        top: -40vw;
     }
     
     #projet span {
         position: relative;
-        top: 100px;
-        left: 30% ;
+        top: 30vw;
+        left: 40vw ;
         font-family: 'Source Code Pro', monospace;
         color: aliceblue;
         display: inline-block;
@@ -480,26 +479,25 @@
         z-index: 10;
     }
     .container #projet li {
-        display: inline-block;
+        display: block;
+        left: 0;
     }
     
     .container #projet img {
         position: relative;
         top: 100px;
-        left: 28%;
+        left: 40.5vw;
         margin: 50px 0px;
-        transform: translate(-50%, 0%);
-        width: 80vw;
+        width: 100%;
     }
 
     .container #contact {
         position: relative;
-        width: 60vw;
-        height: 800px;
+        width: 100%;
+        height: 80vw;
         z-index: 0;
         left: 50%;
         transform: translate( -50%, 0%);
-        /* background-color:rgb(98, 63, 255) ; */
     }
 
     .container #contact h1 {
@@ -516,11 +514,11 @@
 
     .sticky {
         position: fixed;
-        height: 300px;
+        height: 70vw;
         width: 130px;
         background-color: rgb(63, 63, 63);
-        top: 70%;
-        left: -100px;
+        top: 100vw;
+        left: -25vw;
         text-align: center;
         transform: translate( 0%,-50%);
         transition: 0.5s ease-in-out;
@@ -563,21 +561,45 @@
     /* footer */
 
     .footerr { 
-        position: relative;
-        bottom: 0%;
-        height: 100px;
+        visibility: hidden;
+
+    }
+
+
+    #navFooter {
+        visibility: visible;
+        position: fixed;
+        display: flex;
+        overflow-y: auto;
+        bottom: 0;
+        left: 0;
+        min-width: none;
         width: 100%;
-        background-color: rgb(63, 63, 63);
-        z-index: 15;
-    }
-
-    .footerr h1 {
-        position: relative;
+        min-height: 25vw;
+        background-color: rgb(63, 63, 63); 
+        z-index: 0;   
         color: aliceblue;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    
+    #navFooter ul {
+        position: absolute;
+    }
+    
+    #navFooter li a {
+        position: relative;
+        display: inline-block;
+        left: -10px;
+        height: 25vw;
+        width: 28vw;
+        line-height: 25vw;
         text-align: center;
-        top: 30px;
-        font-size: 20px;
+        font-size: 25px;
+        text-decoration: none;
     }
 
+    #navFooter a:visited {
+        color: inherit ;
+        text-decoration: none;
+    }
+    
 }
