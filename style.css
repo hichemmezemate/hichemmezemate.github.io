@@ -492,14 +492,14 @@ header {
     .sticky {
         position: fixed;
         height: 37vh;
-        width: 130px;
+        width: 30vw;
         background-color: rgb(63, 63, 63);
         top: 50vh;
-        left: 0vw;
+        left: -22vw;
         text-align: center;
         transform: translate( 0%,-50%);
         transition: 0.5s ease-in-out;
-        border-radius: 0px 50px 50px 0px;
+        border-radius: 0px 10vw 10vw 0px;
     }
 
     .sticky:hover {
@@ -511,7 +511,7 @@ header {
         position: relative;
         height: 12vh;
         width: 60%;
-        left: 15px;
+        left: 5vw;
         font-size: 50px;
         display: block;
         background-color: transparent;
@@ -523,7 +523,7 @@ header {
         top: 50%;
         left: 40%;
         transform: translate(-50%, -50%);
-        width: 60px;
+        width: 15vw;
         fill: aliceblue;
     }
 
