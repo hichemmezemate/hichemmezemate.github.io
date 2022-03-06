@@ -495,7 +495,7 @@ header {
         width: 130px;
         background-color: rgb(63, 63, 63);
         top: 50vh;
-        left: -25vw;
+        left: 0vw;
         text-align: center;
         transform: translate( 0%,-50%);
         transition: 0.5s ease-in-out;
@@ -509,7 +509,7 @@ header {
 
     .sticky span {
         position: relative;
-        height: 100px;
+        height: 12vh;
         width: 60%;
         left: 15px;
         font-size: 50px;
