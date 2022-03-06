@@ -371,8 +371,8 @@ header {
     }
 
     .logo2 {
-        top: 2vw;
-        font-size: 6vw;
+        top: 2vh;
+        font-size: 2.5vh;
         right: 5vw;
         visibility: visible;
     }
@@ -514,11 +514,11 @@ header {
 
     .sticky {
         position: fixed;
-        height: 70vw;
+        height: 37vh;
         width: 130px;
         background-color: rgb(63, 63, 63);
-        top: 100vw;
-        left: -25vw;
+        top: 50vh;
+        left: -100px;
         text-align: center;
         transform: translate( 0%,-50%);
         transition: 0.5s ease-in-out;
@@ -569,8 +569,6 @@ header {
     #navFooter {
         visibility: visible;
         position: fixed;
-        display: flex;
-        overflow-y: auto;
         bottom: 0;
         left: 0;
         min-width: none;
@@ -578,28 +576,30 @@ header {
         min-height: 25vw;
         background-color: rgb(63, 63, 63); 
         z-index: 0;   
-        color: aliceblue;
+        color: aqua;
+        
     }
     
-    #navFooter ul {
-        position: absolute;
+    #navFooter a {
+        text-decoration: none;
     }
-    
-    #navFooter li a {
+
+    #navFooter li {
         position: relative;
         display: inline-block;
-        left: -10px;
+        left: -6vw;
         height: 25vw;
-        width: 28vw;
+        width: 25vw;
         line-height: 25vw;
         text-align: center;
         font-size: 25px;
-        text-decoration: none;
+        padding: 0 2vw;
+        color: aliceblue;
+        font-style: normal;
     }
 
     #navFooter a:visited {
         color: inherit ;
-        text-decoration: none;
     }
     
 }
