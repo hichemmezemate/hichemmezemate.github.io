@@ -53,7 +53,7 @@ export default function Hero() {
               mx: 'auto'
             }}
           >
-            Architecte des Systèmes d'Information et développeur passionné par la conception d'applications robustes. 
+            Développeur Full Stack passionné par la conception d'applications robustes. 
             Expertise en VueJS, React, Node.js et Python au service de projets à fort impact.
           </Typography>
 

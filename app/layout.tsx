@@ -5,8 +5,13 @@ import Navbar from '../components/Navbar';
 import Box from '@mui/material/Box';
 
 export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "Portfolio",
+  title: "Hichem Mezemate | Développeur Full Stack & Architect des Systèmes d'Information",
+  description: "Développeur Full Stack spécialisé en React, Vue.js, Node.js et Python. Découvrez mes projets et mon parcours aux Ministères Sociaux.",
+  keywords: ["Hichem Mezemate", "Développeur Full Stack", "Portfolio", "React", "Next.js", "Docker", "Paris", "Node.js", "Vue.js"],
+  icons: {
+    icon: '/pixelArt.ico', 
+    apple: '/pixelArt.ico', 
+  },
 };
 
 export default function RootLayout({

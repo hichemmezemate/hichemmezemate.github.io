@@ -10,7 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import CodeIcon from '@mui/icons-material/Code';
+import Avatar from '@mui/material/Avatar'; // Import pour le logo rond
 import Link from 'next/link';
 import { navLinks } from '../data/config'; 
 
@@ -46,7 +46,19 @@ function Navbar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           
-          <CodeIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* LOGO DESKTOP - Rendu Rond via Avatar */}
+          <Avatar
+            src="/pixelArt.png"
+            alt="Hichem Mezemate"
+            sx={{ 
+              display: { xs: 'none', md: 'flex' }, 
+              mr: 2, 
+              width: 45, 
+              height: 45,
+              border: '2px solid #fff'
+            }}
+          />
+
           <Typography
             variant="h6"
             noWrap
@@ -57,7 +69,7 @@ function Navbar() {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '.1rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
@@ -65,6 +77,7 @@ function Navbar() {
             Hichem Mezemate
           </Typography>
 
+          {/* MENU MOBILE (Hamburger) */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -91,7 +104,19 @@ function Navbar() {
             </Menu>
           </Box>
           
-          <CodeIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          {/* LOGO MOBILE - Rendu Rond via Avatar */}
+          <Avatar
+            src="/pixelArt.png"
+            alt="Hichem Mezemate"
+            sx={{ 
+              display: { xs: 'flex', md: 'none' }, 
+              mr: 1, 
+              width: 35, 
+              height: 35,
+              border: '1px solid #fff'
+            }}
+          />
+
           <Typography
             variant="h5"
             noWrap
@@ -103,7 +128,7 @@ function Navbar() {
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '.2rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
@@ -111,6 +136,7 @@ function Navbar() {
             Hichem
           </Typography>
 
+          {/* LIENS DE NAVIGATION (Desktop) */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
             {navLinks.map((page) => (
               <Button
@@ -125,7 +151,8 @@ function Navbar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0, display: 'flex', gap: 1 }}>
+          {/* ACTIONS (Langue + Thème) */}
+          <Box sx={{ flexGrow: 0, display: 'flex', gap: 1, alignItems: 'center' }}>
             
             <IconButton onClick={handleOpenLangMenu} color="inherit">
                 <TranslateIcon />
