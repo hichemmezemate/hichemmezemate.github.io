@@ -7,20 +7,26 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import SchoolIcon from '@mui/icons-material/School';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
-import { formations, certifications } from '../data/config';
+import { useLanguage } from './LanguageContext';
+import { getFormations, getCertifications, translations } from '../data/config';
 
 export default function Education() {
+  const { language } = useLanguage();
+  const formations = getFormations(language);
+  const certifications = getCertifications(language);
+
   return (
     <Box id="education" sx={{ py: 10, bgcolor: 'background.paper' }}>
       <Container maxWidth="lg">
         <Typography variant="h3" component="h2" sx={{ fontWeight: 'bold', mb: 6, textAlign: 'center' }}>
-          Formations & <Box component="span" sx={{ color: 'primary.main' }}>Certifications</Box>
+          {language === 'fr' ? 'Formations' : 'Education'} & <Box component="span" sx={{ color: 'primary.main' }}>Certifications</Box>
         </Typography>
 
         <Grid container spacing={6}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h5" sx={{ display: 'flex', alignItems: 'center', mb: 4, fontWeight: 'bold' }}>
-              <SchoolIcon sx={{ mr: 1, color: 'primary.main' }} /> Parcours Académique
+              <SchoolIcon sx={{ mr: 1, color: 'primary.main' }} /> 
+              {language === 'fr' ? 'Parcours Académique' : 'Academic Background'}
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               {formations.map((formation, index) => (
@@ -61,7 +67,7 @@ export default function Education() {
                       {cert.title}
                     </Typography>
                     <Typography variant="caption" display="block" sx={{ mt: 1, color: 'text.secondary', fontWeight: 'bold' }}>
-                      Obtenu en {cert.date}
+                      {language === 'fr' ? 'Obtenu en ' : 'Obtained in '} {cert.date}
                     </Typography>
                   </CardContent>
                 </Card>

@@ -7,9 +7,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Chip from '@mui/material/Chip';
 import { useTheme } from '@mui/material/styles';
-import { skillsData } from '../data/config';
+import { useLanguage } from './LanguageContext';
+import { getSkillsData, translations } from '../data/config';
 
-import { FaJava, FaHandshake, FaBrain, FaClock, FaTasks, FaComments, FaUsers, FaMicrosoft } from 'react-icons/fa';
+import { FaJava, FaBrain, FaClock, FaTasks, FaComments, FaUsers, FaMicrosoft } from 'react-icons/fa';
 
 import { 
   SiRuby, SiPython, SiPhp, SiTypescript, SiJavascript, SiHtml5, SiCss3, 
@@ -61,6 +62,12 @@ const iconMapping: Record<string, IconType> = {
   "Organisation": FaTasks,
   "Communication": FaComments,
   "Travail en équipe": FaUsers,
+
+  "Autonomy": FaBrain,
+  "Self-teaching": FaBrain,
+  "Punctuality": FaClock,
+  "Organization": FaTasks,
+  "Teamwork": FaUsers,
 };
 
 const getIcon = (skillName: string) => {
@@ -70,12 +77,19 @@ const getIcon = (skillName: string) => {
 
 export default function Skills() {
   const theme = useTheme();
+  
+  const { language } = useLanguage();
+  const skillsData = getSkillsData(language);
+  const t = translations[language];
 
   return (
     <Box id="skills" sx={{ py: 10, bgcolor: 'background.default' }}>
       <Container maxWidth="xl">
         <Typography variant="h3" component="h2" sx={{ fontWeight: 'bold', mb: 6, textAlign: 'center' }}>
-          Mes <Box component="span" sx={{ color: 'primary.main' }}>Compétences</Box>
+          {language === 'fr' ? 'Mes ' : 'My '}
+          <Box component="span" sx={{ color: 'primary.main' }}>
+             {t.sections.skills}
+          </Box>
         </Typography>
 
         <Grid container spacing={4}>

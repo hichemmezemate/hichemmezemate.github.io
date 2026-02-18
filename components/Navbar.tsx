@@ -10,20 +10,25 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import Avatar from '@mui/material/Avatar'; // Import pour le logo rond
+import Avatar from '@mui/material/Avatar';
 import Link from 'next/link';
-import { navLinks } from '../data/config'; 
+import { getNavLinks } from '../data/config'; 
 
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import TranslateIcon from '@mui/icons-material/Translate';
 import { useTheme } from '@mui/material/styles';
 import { useColorMode } from './ThemeContextProvider';
+import { useLanguage } from './LanguageContext';
 
 function Navbar() {
   const theme = useTheme();
   const { toggleColorMode } = useColorMode();
   
+  const { language, setLanguage } = useLanguage();
+  
+  const links = getNavLinks(language);
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElLang, setAnchorElLang] = React.useState<null | HTMLElement>(null);
 
@@ -41,12 +46,16 @@ function Navbar() {
     setAnchorElLang(null);
   };
 
+  const handleLanguageChange = (lang: 'fr' | 'en') => {
+    setLanguage(lang);
+    handleCloseLangMenu();
+  };
+
   return (
     <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           
-          {/* LOGO DESKTOP - Rendu Rond via Avatar */}
           <Avatar
             src="/pixelArt.png"
             alt="Hichem Mezemate"
@@ -77,7 +86,6 @@ function Navbar() {
             Hichem Mezemate
           </Typography>
 
-          {/* MENU MOBILE (Hamburger) */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -96,7 +104,7 @@ function Navbar() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {navLinks.map((page) => (
+              {links.map((page) => (
                 <MenuItem key={page.label} onClick={handleCloseNavMenu} component={Link} href={page.href}>
                   <Typography textAlign="center">{page.label}</Typography>
                 </MenuItem>
@@ -104,7 +112,6 @@ function Navbar() {
             </Menu>
           </Box>
           
-          {/* LOGO MOBILE - Rendu Rond via Avatar */}
           <Avatar
             src="/pixelArt.png"
             alt="Hichem Mezemate"
@@ -136,22 +143,20 @@ function Navbar() {
             Hichem
           </Typography>
 
-          {/* LIENS DE NAVIGATION (Desktop) */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
-            {navLinks.map((page) => (
+            {links.map((page) => (
               <Button
                 key={page.label}
                 component={Link}
                 href={page.href}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block', mx: 2 }}
+                sx={{ my: 2, color: 'inherit', display: 'block', mx: 2 }}
               >
                 {page.label}
               </Button>
             ))}
           </Box>
 
-          {/* ACTIONS (Langue + Thème) */}
           <Box sx={{ flexGrow: 0, display: 'flex', gap: 1, alignItems: 'center' }}>
             
             <IconButton onClick={handleOpenLangMenu} color="inherit">
@@ -166,8 +171,8 @@ function Navbar() {
               open={Boolean(anchorElLang)}
               onClose={handleCloseLangMenu}
             >
-                <MenuItem onClick={handleCloseLangMenu}>English</MenuItem>
-                <MenuItem onClick={handleCloseLangMenu}>Français</MenuItem>
+                <MenuItem onClick={() => handleLanguageChange('en')}>English</MenuItem>
+                <MenuItem onClick={() => handleLanguageChange('fr')}>Français</MenuItem>
             </Menu>
 
             <IconButton onClick={toggleColorMode} color="inherit">

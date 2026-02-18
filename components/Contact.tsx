@@ -7,19 +7,27 @@ import Stack from '@mui/material/Stack';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { siteConfig } from '../data/config';
+import { useLanguage } from './LanguageContext';
+import { getSiteConfig } from '../data/config';
 
 export default function Contact() {
+  const { language } = useLanguage();
+  const config = getSiteConfig(language);
+
   return (
     <Box id="contact" sx={{ py: 10, bgcolor: 'background.default', textAlign: 'center' }}>
       <Container maxWidth="md">
         <Typography variant="h3" component="h2" sx={{ fontWeight: 'bold', mb: 3 }}>
-          Contactez-<Box component="span" sx={{ color: 'primary.main' }}>Moi</Box>
+          {language === 'fr' ? 'Contactez-' : 'Contact '}
+          <Box component="span" sx={{ color: 'primary.main' }}>
+            {language === 'fr' ? 'Moi' : 'Me'}
+          </Box>
         </Typography>
         
         <Typography variant="h6" color="text.secondary" sx={{ mb: 6 }}>
-          Actuellement à l'écoute de nouvelles opportunités en tant que Développeur Full Stack / DevOps.
-          N'hésitez pas à me contacter pour échanger sur vos projets.
+          {language === 'fr' 
+            ? "Actuellement à l'écoute de nouvelles opportunités en tant que Développeur Full Stack / DevOps. N'hésitez pas à me contacter pour échanger sur vos projets."
+            : "Currently open to new opportunities as a Full Stack / DevOps Developer. Feel free to reach out to discuss your projects."}
         </Typography>
 
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3} justifyContent="center">
@@ -27,17 +35,17 @@ export default function Contact() {
             variant="contained" 
             size="large" 
             startIcon={<EmailIcon />}
-            href={`mailto:${siteConfig.email}`}
+            href={`mailto:${config.email}`}
             sx={{ px: 4, py: 1.5 }}
           >
-            M'envoyer un mail
+            {language === 'fr' ? "M'envoyer un mail" : "Send me an email"}
           </Button>
           
           <Button 
             variant="outlined" 
             size="large" 
             startIcon={<LinkedInIcon />}
-            href={siteConfig.socials.linkedin}
+            href={config.socials.linkedin}
             target="_blank"
             sx={{ px: 4, py: 1.5 }}
           >
@@ -48,7 +56,7 @@ export default function Contact() {
             variant="outlined" 
             size="large" 
             startIcon={<GitHubIcon />}
-            href={siteConfig.socials.github}
+            href={config.socials.github}
             target="_blank"
             sx={{ px: 4, py: 1.5, borderColor: 'text.primary', color: 'text.primary' }}
           >
@@ -57,7 +65,7 @@ export default function Contact() {
         </Stack>
 
         <Typography variant="body2" color="text.secondary" sx={{ mt: 10 }}>
-          © {new Date().getFullYear()} {siteConfig.title}. Tous droits réservés.
+          © {new Date().getFullYear()} {config.title}. {language === 'fr' ? "Tous droits réservés." : "All rights reserved."}
         </Typography>
       </Container>
     </Box>

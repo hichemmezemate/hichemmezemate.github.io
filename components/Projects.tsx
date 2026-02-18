@@ -10,17 +10,29 @@ import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import CodeIcon from '@mui/icons-material/Code';
-import { projects } from '../data/config';
+import { useLanguage } from './LanguageContext';
+import { getProjects, translations } from '../data/config';
 
 export default function Projects() {
+  const { language } = useLanguage();
+  const projects = getProjects(language);
+  const t = translations[language];
+
   return (
     <Box id="projects" sx={{ py: 10, bgcolor: 'background.paper' }}>
       <Container maxWidth="xl">
         <Typography variant="h3" component="h2" sx={{ fontWeight: 'bold', mb: 2, textAlign: 'center' }}>
-          Mes <Box component="span" sx={{ color: 'primary.main' }}>Projets</Box>
+          {language === 'fr' ? 'Mes ' : 'My '} 
+          <Box component="span" sx={{ color: 'primary.main' }}>
+            {language === 'fr' ? 'Projets' : 'Projects'}
+          </Box>
         </Typography>
+        
         <Typography variant="h6" color="text.secondary" sx={{ mb: 8, textAlign: 'center', maxWidth: 700, mx: 'auto' }}>
-          Une sélection de mes travaux personnels et professionnels.
+          {/* Traduction du sous-titre */}
+          {language === 'fr' 
+            ? "Une sélection de mes travaux personnels et professionnels."
+            : "A selection of my personal and professional work."}
         </Typography>
 
         <Grid container spacing={4}>
@@ -91,7 +103,9 @@ export default function Projects() {
                     </Button>
                   ))}
                   {(!project.githubLinks || project.githubLinks.length === 0) && (
-                     <Button size="small" disabled>Code privé</Button>
+                     <Button size="small" disabled>
+                        {language === 'fr' ? "Code privé" : "Private Code"}
+                     </Button>
                   )}
                 </CardActions>
               </Card>

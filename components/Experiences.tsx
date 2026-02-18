@@ -6,15 +6,20 @@ import Chip from '@mui/material/Chip';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
-import { experiences } from '../data/config';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import { useLanguage } from './LanguageContext';
+import { getExperiences, translations } from '../data/config';
 
 export default function Experience() {
+  const { language } = useLanguage();
+  const experiences = getExperiences(language);
+  const t = translations[language];
+
   return (
     <Box id="experience" sx={{ py: 10, bgcolor: 'background.default' }}>
       <Container maxWidth="lg">
         <Typography variant="h3" component="h2" sx={{ fontWeight: 'bold', mb: 6, textAlign: 'center' }}>
-          Parcours <Box component="span" sx={{ color: 'primary.main' }}>Professionnel</Box>
+           <Box component="span" sx={{ color: 'primary.main' }}>{t.sections.experience}</Box>
         </Typography>
 
         <Stack spacing={4} sx={{ maxWidth: 900, mx: 'auto' }}>

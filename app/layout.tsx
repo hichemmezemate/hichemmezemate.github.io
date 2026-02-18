@@ -3,32 +3,30 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import ThemeContextProvider from '../components/ThemeContextProvider'; 
 import Navbar from '../components/Navbar';
 import Box from '@mui/material/Box';
+import './globals.css';
+import { LanguageProvider } from '../components/LanguageContext';
 
 export const metadata: Metadata = {
-  title: "Hichem Mezemate | Développeur Full Stack & Architect des Systèmes d'Information",
-  description: "Développeur Full Stack spécialisé en React, Vue.js, Node.js et Python. Découvrez mes projets et mon parcours aux Ministères Sociaux.",
-  keywords: ["Hichem Mezemate", "Développeur Full Stack", "Portfolio", "React", "Next.js", "Docker", "Paris", "Node.js", "Vue.js"],
+  title: "Hichem Mezemate | Portfolio",
+  description: "Développeur Full Stack",
   icons: {
-    icon: '/pixelArt.ico', 
-    apple: '/pixelArt.ico', 
+    icon: '/pixelArt.ico',
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body>
         <AppRouterCacheProvider>
-          <ThemeContextProvider>
-            <Navbar />
-            <Box component="main">
+          <LanguageProvider>
+            <ThemeContextProvider>
+              <Navbar />
+              <Box component="main">
                 {children}
-            </Box>
-          </ThemeContextProvider>
+              </Box>
+            </ThemeContextProvider>
+          </LanguageProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

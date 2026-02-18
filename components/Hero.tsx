@@ -6,9 +6,15 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Link from 'next/link';
 import { useTheme } from '@mui/material/styles';
+import { useLanguage } from './LanguageContext';
+import { getSiteConfig, translations } from '../data/config';
 
 export default function Hero() {
   const theme = useTheme();
+  const { language } = useLanguage();
+  
+  const config = getSiteConfig(language);
+  const t = translations[language];
 
   return (
     <Box
@@ -35,9 +41,9 @@ export default function Hero() {
               fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem' },
             }}
           >
-            Développeur <br />
+            {language === 'fr' ? 'Développeur' : 'Full Stack'} <br />
             <Box component="span" sx={{ color: 'primary.main' }}>
-              Full Stack
+              {language === 'fr' ? 'Full Stack' : 'Developer'}
             </Box>
           </Typography>
 
@@ -53,8 +59,7 @@ export default function Hero() {
               mx: 'auto'
             }}
           >
-            Développeur Full Stack passionné par la conception d'applications robustes. 
-            Expertise en VueJS, React, Node.js et Python au service de projets à fort impact.
+            {config.description}
           </Typography>
 
           <Stack
@@ -66,10 +71,10 @@ export default function Hero() {
               variant="contained"
               size="large"
               component={Link}
-              href="mailto:ton-email@example.com"
+              href={`mailto:${config.email}`}
               sx={{ px: 4, py: 1.5, fontSize: '1.1rem' }}
             >
-              Me contacter
+              {t.sections.contact}
             </Button>
             
             <Button
@@ -79,7 +84,7 @@ export default function Hero() {
               href="#projects"
               sx={{ px: 4, py: 1.5, fontSize: '1.1rem' }}
             >
-              Voir mes projets
+              {t.sections.projects}
             </Button>
           </Stack>
         </Box>
