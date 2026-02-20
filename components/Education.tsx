@@ -8,12 +8,27 @@ import CardContent from '@mui/material/CardContent';
 import SchoolIcon from '@mui/icons-material/School';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { useLanguage } from './LanguageContext';
-import { getFormations, getCertifications, translations } from '../data/config';
+import { getFormations, getCertifications } from '../data/config';
 
 export default function Education() {
   const { language } = useLanguage();
   const formations = getFormations(language);
   const certifications = getCertifications(language);
+
+  const cardStyle = {
+    transition: '0.3s',
+    border: 1,
+    borderTop: 4, 
+    borderColor: 'divider',
+    borderTopColor: 'primary.main', 
+    '&:hover': { 
+      borderColor: 'primary.main',
+      transform: 'translateY(-5px)',
+      boxShadow: (theme: any) => theme.palette.mode === 'dark' 
+        ? '0 4px 20px rgba(233, 79, 55, 0.2)' 
+        : '0 4px 20px rgba(0,0,0,0.1)'
+    }
+  };
 
   return (
     <Box id="education" sx={{ py: 10, bgcolor: 'background.paper' }}>
@@ -30,7 +45,7 @@ export default function Education() {
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               {formations.map((formation, index) => (
-                <Card key={index} variant="outlined" sx={{ borderLeft: 4, borderColor: 'primary.main' }}>
+                <Card key={index} variant="outlined" sx={cardStyle}>
                   <CardContent>
                     <Typography variant="h6" component="h3" fontWeight="bold">
                       {formation.school}
@@ -58,7 +73,7 @@ export default function Education() {
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
               {certifications.map((cert, index) => (
-                <Card key={index} variant="outlined" sx={{ borderLeft: 4, borderColor: 'primary.main' }}>
+                <Card key={index} variant="outlined" sx={cardStyle}>
                   <CardContent>
                     <Typography variant="h6" component="h3" fontWeight="bold">
                       {cert.issuer}

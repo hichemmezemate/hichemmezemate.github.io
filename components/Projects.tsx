@@ -29,7 +29,6 @@ export default function Projects() {
         </Typography>
         
         <Typography variant="h6" color="text.secondary" sx={{ mb: 8, textAlign: 'center', maxWidth: 700, mx: 'auto' }}>
-          {/* Traduction du sous-titre */}
           {language === 'fr' 
             ? "Une sélection de mes travaux personnels et professionnels."
             : "A selection of my personal and professional work."}

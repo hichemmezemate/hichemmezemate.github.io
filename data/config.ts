@@ -82,8 +82,8 @@ export const translations = {
 export const getSiteConfig = (lang: 'fr' | 'en') => ({
   title: "Hichem Mezemate | Portfolio",
   description: lang === 'fr' 
-    ? "Développeur Full Stack spécialisé en React, Vue.js, Node.js et Python. Découvrez mes projets et mon parcours aux Ministères Sociaux."
-    : "Full Stack Developer specialized in React, Vue.js, Node.js and Python. Discover my projects and my career at the Social Ministries.",
+    ? "Développeur Full Stack & Architecte SI (JS/TS, Python). Je conçois des applications robustes, sécurisées et à fort impact. Fort de mon parcours aux Ministères Sociaux, je suis aujourd'hui à l'écoute de nouvelles opportunités."
+    : "Full Stack Developer & IT Architect (JS/TS, Python). I build robust, secure, and high-impact applications. Following my impactful work at the French Social Ministries, I am currently open to new opportunities.",
   email: "hichem.mezemate@gmail.com", 
   socials: {
     github: "https://github.com/hichemmezemate",
@@ -162,6 +162,17 @@ export const getExperiences = (lang: 'fr' | 'en'): Experience[] => [
 ];
 
 export const getProjects = (lang: 'fr' | 'en'): Project[] => [
+  {
+    title: lang === 'fr' ? "Moteur de Recherche de Livres" : "Book Search Engine",
+    description: lang === 'fr'
+      ? "Moteur de recherche de livres exploitant la théorie des graphes. Pipeline de données Python pour générer un index inversé et calculer la similarité de Jaccard. Backend robuste en Java/Spring Boot couplé à une interface utilisateur moderne en React et Tailwind CSS."
+      : "Book search engine leveraging graph theory. Python data pipeline to generate an inverted index and compute Jaccard similarities. Robust Java/Spring Boot backend coupled with a modern React and Tailwind CSS user interface.",
+    tech: ["Java", "Spring Boot", "React", "TypeScript", "Tailwind CSS", "Python", "Docker"],
+    githubLinks: [
+      { label: translations[lang].common.sourceCode, url: "https://github.com/hichemmezemate/BookSearchEngine" }
+    ],
+    status: lang === 'fr' ? "Terminé" : "Completed"
+  },
   {
     title: "Doctolib Clone",
     description: lang === 'fr' 
